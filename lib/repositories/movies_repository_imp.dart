@@ -3,7 +3,7 @@ import 'package:movies_2/repositories/movies_repository.dart';
 import 'package:movies_2/service/dio_service.dart';
 import 'package:movies_2/utils/apis.utils.dart';
 
-class MoviesRepositoryImp implements MovieRepository {
+class MoviesRepositoryImp implements MoviesRepository {
   final DioService _dioService;
 
   MoviesRepositoryImp(this._dioService);

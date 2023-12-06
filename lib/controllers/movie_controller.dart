@@ -3,7 +3,7 @@ import 'package:movies_2/models/movies_model.dart';
 import 'package:movies_2/repositories/movies_repository.dart';
 
 class MovieController {
-  final MovieRepository _movieRepository;
+  final MoviesRepository _movieRepository;
   MovieController(this._movieRepository) {
     fetch();
   }
