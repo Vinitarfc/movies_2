@@ -27,7 +27,7 @@ class CustomListCardWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(15),
                   bottomLeft: Radius.circular(15),
                 ),
@@ -37,7 +37,7 @@ class CustomListCardWidget extends StatelessWidget {
                     API.REQUEST_IMG(movie.posterPath),
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) return child;
-                      return CircularProgressIndicator.adaptive();
+                      return const CircularProgressIndicator.adaptive();
                     },
                   ),
                 ),

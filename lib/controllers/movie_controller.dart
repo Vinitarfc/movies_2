@@ -8,7 +8,17 @@ class MovieController {
     fetch();
   }
   ValueNotifier<Movies?> movies = ValueNotifier<Movies?>(null);
+  Movies? _cacheMovies;
+
+  onChanged(String value) {
+    List<Movie> list = _cacheMovies!.listMovies
+        .where((e) => e.toString().toLowerCase().contains(value.toLowerCase()))
+        .toList();
+    movies.value = movies.value!.copyWith(listMovies: list);
+  }
+
   fetch() async {
     movies.value = await _movieRepository.getMovies();
+    _cacheMovies = movies.value;
   }
 }
