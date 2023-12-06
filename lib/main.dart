@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Movies DB',
-      theme: ThemeData.dark(),
+      theme: ThemeData.light(), //.dart ficava ruim de ver as alterações
       home: const HomePage(),
     );
   }

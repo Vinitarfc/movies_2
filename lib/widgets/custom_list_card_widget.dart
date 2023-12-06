@@ -10,11 +10,24 @@ class CustomListCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 210,
-      decoration: BoxDecoration(color: Colors.black54),
+      decoration: BoxDecoration(
+          color: Colors.black54, borderRadius: BorderRadius.circular(15)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.network(API.REQUEST_IMG(movie.posterPath)),
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              bottomLeft: Radius.circular(15),
+            ),
+            child: Image.network(
+              API.REQUEST_IMG(movie.posterPath),
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return CircularProgressIndicator.adaptive();
+              },
+            ),
+          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(20),
@@ -25,13 +38,13 @@ class CustomListCardWidget extends StatelessWidget {
                     movie.title,
                     style: Theme.of(context).textTheme.headlineSmall,
                     softWrap: true,
-                    overflow: TextOverflow.visible,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   Spacer(),
                   Text(
                     'Popularidade:' + movie.popularity.toString(),
                     softWrap: true,
-                    overflow: TextOverflow.visible,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(
                     height: 10,
@@ -39,7 +52,7 @@ class CustomListCardWidget extends StatelessWidget {
                   Text(
                     'Votos:' + movie.voteAverage.toString(),
                     softWrap: true,
-                    overflow: TextOverflow.visible,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
