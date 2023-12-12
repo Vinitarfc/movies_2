@@ -4,7 +4,7 @@ import 'package:movies_2/controllers/movie_controller.dart';
 import 'package:movies_2/decorators/movies_cache_repository_decorator.dart';
 import 'package:movies_2/models/movies_model.dart';
 import 'package:movies_2/repositories/movies_repository_imp.dart';
-import 'package:movies_2/service/dio_service_imp.dart';
+import 'package:movies_2/core/data/services/dio_service_imp.dart';
 import 'package:movies_2/widgets/custom_list_card_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   final MovieController _controller = MovieController(
     MoviesCacheRepositoryDecorator(
       MoviesRepositoryImp(
-        DioServiceImp(),
+        DioHttpServiceImp(),
       ),
     ),
   );
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                           'Movies',
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         TextField(
                           onChanged: _controller.onChanged,
                         ),
@@ -53,18 +53,18 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ValueListenableBuilder<Movies?>(
                 valueListenable: _controller.movies,
                 builder: (_, movies, __) {
                   return movies != null
                       ? ListView.separated(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: movies.listMovies.length,
                           itemBuilder: (_, idx) => CustomListCardWidget(
                               movie: movies.listMovies[idx]),
-                          separatorBuilder: (_, __) => Divider(),
+                          separatorBuilder: (_, __) => const Divider(),
                         )
                       : Lottie.asset('assets/lottie.json');
                 },

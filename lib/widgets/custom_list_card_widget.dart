@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_2/models/movies_model.dart';
 import 'package:movies_2/pages/details_page.dart';
-import 'package:movies_2/utils/apis.utils.dart';
+import 'package:movies_2/core/utils/apis.utils.dart';
 
 class CustomListCardWidget extends StatelessWidget {
   final Movie movie;
@@ -54,9 +54,9 @@ class CustomListCardWidget extends StatelessWidget {
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Text(
-                        'Popularidade:' + movie.popularity.toString(),
+                        'Popularidade: $movie.popularity.toString()',
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -64,7 +64,7 @@ class CustomListCardWidget extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        'Votos:' + movie.voteAverage.toString(),
+                        'Votos: $movie.voteAverage.toString()',
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
                       ),

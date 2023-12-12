@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_2/models/movies_model.dart';
-import 'package:movies_2/utils/apis.utils.dart';
+import 'package:movies_2/core/utils/apis.utils.dart';
 
 class DetailsPage extends StatelessWidget {
   final Movie movie;
@@ -25,7 +25,7 @@ class DetailsPage extends StatelessWidget {
                   API.REQUEST_IMG(movie.posterPath),
                   loadingBuilder: (context, child, loadingProgress) {
                     if (loadingProgress == null) return child;
-                    return CircularProgressIndicator.adaptive();
+                    return const CircularProgressIndicator.adaptive();
                   },
                 ),
               ),
@@ -37,14 +37,14 @@ class DetailsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(Icons.title),
+                const Icon(Icons.title),
                 Text(movie.originalTitle),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(Icons.new_releases),
+                const Icon(Icons.new_releases),
                 Text(movie.releaseDate),
               ],
             ),
