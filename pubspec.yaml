@@ -1,23 +1,22 @@
 name: movies_2
 description: "A new Flutter project."
-publish_to: "none"
+publish_to: 'none' 
 version: 1.0.0+1
 environment:
-  sdk: ">=3.2.0 <4.0.0"
+  sdk: '>=3.2.2 <4.0.0'
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
-  dio:
-  lottie:
-  shared_preferences: ^2.2.2
-  get_it: ^7.6.4
-  dartz:
-  cached_network_image:
+  micro_core:
+    path: packages/core/micro_core
+  movie:
+    path: packages/micro_apps/movie
+  login:
+    path: packages/micro_apps/login
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0  
+  flutter_lints: ^2.0.0
 flutter:
   uses-material-design: true
   assets:

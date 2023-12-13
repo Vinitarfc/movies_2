@@ -1,23 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:movies_2/core/inject/inject.dart';
+import 'package:micro_core/micro_core.dart';
+import 'package:movie/movie.dart';
+import 'package:login/login.dart';
 
-import '/features/movie/presentation/ui/pages/home_page.dart';
+import 'package:movies_2/app/splash/splash_page.dart';
 
-void main() {
-  Inject.initialize();
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget with BaseApp {
+  MyApp() {
+    super.registerInjections();
+    super.registerRouters();
+    super.registerListeners();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Movies DB',
-      theme: ThemeData.light(), //.dart ficava ruim de ver as altera��es
-      home: const HomePage(),
+      theme: ThemeData.light(),
+      navigatorKey: navigatorKey,
+      onGenerateRoute: super.generateRoute,
+      initialRoute: '/splash',
     );
   }
+
+  @override
+  Map<String, WidgetBuilderArgs> get baseRoutes => {
+        '/splash': (_, __) => SplashPage(),
+      };
+
+  @override
+  List<MicroApp> get microApps => [
+        MicroAppMovieResolver(),
+        MicroAppLoginResolver(),
+      ];
 }
